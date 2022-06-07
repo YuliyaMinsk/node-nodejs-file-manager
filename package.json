@@ -1,0 +1,24 @@
+{
+  "name": "nodejs-file-manager",
+  "version": "1.0.0",
+  "description": "The File Manager with Node.js APIs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start" : "npm run ./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YuliyaMinsk/node-nodejs-file-manager.git"
+  },
+  "keywords": [
+    "nodejs",
+    "filemanager"
+  ],
+  "author": "yuliyaminsk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YuliyaMinsk/node-nodejs-file-manager/issues"
+  },
+  "homepage": "https://github.com/YuliyaMinsk/node-nodejs-file-manager#readme"
+}
