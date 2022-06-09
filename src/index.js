@@ -1,6 +1,7 @@
 import * as readline from 'node:readline';
 import { getHomeDir, getArgValue } from './utils.js';
 import { list } from './ls.js';
+import { addFile } from './addfile.js';
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -17,6 +18,8 @@ console.log(`You are currently in ${currentDir}`);
 
 rl.on('line', async (input) => {
   const command = input.split(' ')[0];
+  const attribute = input.split(' ')[1];
+
   switch (command) {
     case '.exit': {
       rl.close();
@@ -30,11 +33,13 @@ rl.on('line', async (input) => {
     }
     case 'ls': {
       await list(currentDir);
+      break;
     }
     case 'cat': {
       break;
     }
     case 'add': {
+      await addFile(currentDir, attribute);
       break;
     }
     case 'rn': {
@@ -49,6 +54,9 @@ rl.on('line', async (input) => {
     case 'rm': {
       break;
     }
+    case 'os': {
+      break;
+    }
     case 'hash': {
       break;
     }
@@ -58,14 +66,18 @@ rl.on('line', async (input) => {
     case 'decompress': {
       break;
     }
-    case 'os': {
-      break;
-    }
     default: console.log(`Invalid input! Try again :)`);
   }
-  console.log(`\nYou are currently in ${currentDir}`);
+  if (command !== '.exit') {
+    console.log(`\nYou are currently in ${currentDir}`);
+  }
 });
 
-rl.on('SIGINT', () => rl.close());
-rl.on('close', () => console.log(`Thank you for using File Manager, ${username}!`));
+rl.on('SIGINT', () => {
+  rl.close();
+});
+
+rl.on('close', () => {
+  console.log(`Thank you for using File Manager, ${username}!`);
+});
 
