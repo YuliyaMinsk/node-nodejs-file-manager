@@ -1,6 +1,11 @@
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
+
+export const getHomeDir = () => {
+  return process.env.HOME || process.env.USERPROFILE;
+}
+
 export const getPath = (url, filename) => {
   const currentDir = dirname(fileURLToPath(url));
   const filePath = join(currentDir, filename);
@@ -15,3 +20,5 @@ export const getArgValue = (argsArray, num = 0, charToCut = '=') => {
     return argsArray[num].slice(posOfChar + 1);
   }
 }
+
+
