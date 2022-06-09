@@ -7,3 +7,11 @@ export const getPath = (url, filename) => {
 
   return filePath;
 };
+
+export const getArgValue = (argsArray, num = 0, charToCut = '=') => {
+  const posOfChar = argsArray[num].search(charToCut);
+
+  if (posOfChar != -1) {
+    return argsArray[num].slice(posOfChar + 1);
+  }
+}
