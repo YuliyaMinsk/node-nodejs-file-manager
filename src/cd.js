@@ -1,9 +1,13 @@
 import { chdir } from 'node:process';
-import { join } from 'path';
+import { join, isAbsolute } from 'path';
 
 export const cd = async (currentDir, directory) => {
   try {
-    chdir(join(currentDir, directory));
+    if (isAbsolute(directory)) {
+      chdir(join(directory));
+    } else {
+      chdir(join(currentDir, directory));
+    }
   }
   catch(err) {
     console.error('Operation failed. ' + err.message);
