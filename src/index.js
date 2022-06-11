@@ -5,6 +5,7 @@ import { up } from './up.js';
 import { list } from './ls.js';
 import { addFile } from './addfile.js';
 import { cd } from './cd.js';
+import { os } from './os.js';
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -20,8 +21,9 @@ console.log(`Welcome to the File Manager, ${username}!`);
 console.log(`You are currently in ${currentDir}`);
 
 rl.on('line', async (input) => {
-  const command = input.split(' ')[0];
-  const attribute = input.split(' ')[1];
+  const inputArray = input.split(' ');
+  const command = inputArray[0];
+  const attributes = inputArray.slice(1);
 
   switch (command) {
     case '.exit': {
@@ -33,7 +35,7 @@ rl.on('line', async (input) => {
       break;
     }
     case 'cd': {
-      await cd(currentDir, attribute);
+      await cd(currentDir, attributes);
       break;
     }
     case 'ls': {
@@ -44,7 +46,7 @@ rl.on('line', async (input) => {
       break;
     }
     case 'add': {
-      await addFile(currentDir, attribute);
+      await addFile(currentDir, attributes);
       break;
     }
     case 'rn': {
@@ -60,6 +62,7 @@ rl.on('line', async (input) => {
       break;
     }
     case 'os': {
+      await os(attributes);
       break;
     }
     case 'hash': {
