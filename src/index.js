@@ -1,16 +1,17 @@
 import * as readline from 'node:readline';
-import { getHomeDir, getCurrentDir, getArgValue } from './utils.js';
+import { getHomeDir, getCurrentDir, setCurrentDir, getArgValue } from './utils.js';
 
 import { up } from './up.js';
 import { list } from './ls.js';
 import { addFile } from './addfile.js';
+import { cd } from './cd.js';
 
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
 
-let currentDir = getHomeDir();
+let currentDir = setCurrentDir(getHomeDir());
 
 const argsArray = process.argv.slice(2);
 const username = argsArray.length > 0 ? getArgValue(argsArray) : 'Anonymous';
@@ -32,6 +33,7 @@ rl.on('line', async (input) => {
       break;
     }
     case 'cd': {
+      await cd(currentDir, attribute);
       break;
     }
     case 'ls': {
