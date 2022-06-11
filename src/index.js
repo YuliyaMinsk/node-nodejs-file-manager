@@ -1,5 +1,7 @@
 import * as readline from 'node:readline';
-import { getHomeDir, getArgValue } from './utils.js';
+import { getHomeDir, getCurrentDir, getArgValue } from './utils.js';
+
+import { up } from './up.js';
 import { list } from './ls.js';
 import { addFile } from './addfile.js';
 
@@ -8,7 +10,7 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-const currentDir = getHomeDir();
+let currentDir = getHomeDir();
 
 const argsArray = process.argv.slice(2);
 const username = argsArray.length > 0 ? getArgValue(argsArray) : 'Anonymous';
@@ -26,6 +28,7 @@ rl.on('line', async (input) => {
       break;
     }
     case 'up': {
+      await up();
       break;
     }
     case 'cd': {
@@ -68,7 +71,9 @@ rl.on('line', async (input) => {
     }
     default: console.log(`Invalid input! Try again :)`);
   }
+  
   if (command !== '.exit') {
+    currentDir = getCurrentDir();
     console.log(`\nYou are currently in ${currentDir}`);
   }
 });
