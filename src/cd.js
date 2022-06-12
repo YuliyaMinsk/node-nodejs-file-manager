@@ -1,11 +1,13 @@
 import { chdir } from 'node:process';
 import { join, isAbsolute } from 'path';
 
-export const cd = async (currentDir, directory) => {
+export const cd = async (currentDir, input) => {
   try {
-    if (directory.length > 1) {
+    if (input.length !== 1) {
       throw new Error('Invalid command arguments!');
     }
+
+    const directory = input[0];
 
     if (isAbsolute(directory)) {
       chdir(join(directory));
