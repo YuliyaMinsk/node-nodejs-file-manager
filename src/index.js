@@ -7,6 +7,8 @@ import { addFile } from './addfile.js';
 import { cd } from './cd.js';
 import { os } from './os.js';
 import { hash } from './hash.js';
+import { compress } from './compress.js';
+import { decompress } from './decompress.js';
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -67,13 +69,15 @@ rl.on('line', async (input) => {
       break;
     }
     case 'hash': {
-      await hash(currentDir, attributes);
+      await hash(attributes);
       break;
     }
     case 'compress': {
+      await compress(attributes);
       break;
     }
     case 'decompress': {
+      await decompress(attributes);
       break;
     }
     default: console.log(`Invalid input! Try again :)`);

@@ -1,19 +1,21 @@
 import { createReadStream } from 'fs';
 import { createHash } from 'crypto';
-import { join } from 'path';
+import { join, basename } from 'path';
 
-export const hash = async (currentDir, fileName) => {
+export const hash = async (input) => {
   const promis = new Promise((resolve, reject) => {
     try {
-      if (fileName.length > 1) {
+      if (input.length > 1) {
         throw new Error('Invalid command arguments!');
       }
+
+      const pathToFile = input[0];
     
-      const fileToCreateHash = createReadStream(join(currentDir, fileName[0]));
+      const fileToCreateHash = createReadStream(pathToFile);
       const hash = createHash('sha256');
 
       fileToCreateHash.on('error', (err) => {
-        console.error('Operation failed1. ' + err.message)
+        console.error('Operation failed. ' + err.message)
         resolve();
       });
       fileToCreateHash.on('end', () => {
@@ -30,7 +32,7 @@ export const hash = async (currentDir, fileName) => {
 
     }    
     catch(err) {
-      console.error('Operation failed2. ' + err.message);
+      console.error('Operation failed. ' + err.message);
       resolve();
     }
   });
