@@ -6,6 +6,7 @@ import { list } from './ls.js';
 import { addFile } from './addfile.js';
 import { cd } from './cd.js';
 import { os } from './os.js';
+import { hash } from './hash.js';
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -66,6 +67,7 @@ rl.on('line', async (input) => {
       break;
     }
     case 'hash': {
+      await hash(currentDir, attributes);
       break;
     }
     case 'compress': {

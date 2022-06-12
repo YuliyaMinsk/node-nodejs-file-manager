@@ -19,7 +19,6 @@ export const setCurrentDir = (currentDir) => {
 export const getFilePath = (url, filename) => {
   const currentDir = dirname(fileURLToPath(url));
   const filePath = join(currentDir, filename);
-
   return filePath;
 };
 
