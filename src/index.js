@@ -4,12 +4,13 @@ import { getHomeDir, getCurrentDir, setCurrentDir, getArgValue } from './utils.j
 import { up } from './up.js';
 import { list } from './ls.js';
 import { addFile } from './addfile.js';
+import { deleteFile } from './delete.js'
+import { renameFile } from './renameFile.js';
 import { cd } from './cd.js';
 import { os } from './os.js';
 import { hash } from './hash.js';
 import { compress } from './compress.js';
 import { decompress } from './decompress.js';
-import { deleteFile } from './delete.js'
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -54,6 +55,7 @@ rl.on('line', async (input) => {
       break;
     }
     case 'rn': {
+      await renameFile(attributes);
       break;
     }
     case 'cp': {
