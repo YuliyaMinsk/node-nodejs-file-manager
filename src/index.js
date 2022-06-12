@@ -6,6 +6,7 @@ import { list } from './ls.js';
 import { addFile } from './addfile.js';
 import { deleteFile } from './delete.js'
 import { renameFile } from './renameFile.js';
+import { copyFile } from './copyFile.js';
 import { cd } from './cd.js';
 import { os } from './os.js';
 import { hash } from './hash.js';
@@ -59,6 +60,7 @@ rl.on('line', async (input) => {
       break;
     }
     case 'cp': {
+      await copyFile(attributes);
       break;
     }
     case 'mv': {
