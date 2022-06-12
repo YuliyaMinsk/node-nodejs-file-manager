@@ -1,6 +1,7 @@
 import * as readline from 'node:readline';
 import { getHomeDir, getCurrentDir, setCurrentDir, getArgValue } from './utils.js';
 
+import { help } from './help.js';
 import { up } from './up.js';
 import { list } from './ls.js';
 import { addFile } from './addfile.js';
@@ -36,6 +37,10 @@ rl.on('line', async (input) => {
   switch (command) {
     case '.exit': {
       rl.close();
+      break;
+    }
+    case 'help': {
+      await help();
       break;
     }
     case 'up': {
