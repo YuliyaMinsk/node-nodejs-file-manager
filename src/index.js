@@ -7,6 +7,7 @@ import { addFile } from './addfile.js';
 import { deleteFile } from './delete.js'
 import { renameFile } from './renameFile.js';
 import { copyFile } from './copyFile.js';
+import { moveFile } from './moveFile.js';
 import { cd } from './cd.js';
 import { os } from './os.js';
 import { hash } from './hash.js';
@@ -64,6 +65,7 @@ rl.on('line', async (input) => {
       break;
     }
     case 'mv': {
+      await moveFile(attributes);
       break;
     }
     case 'rm': {

@@ -1,8 +1,8 @@
-import { copyFile as copy } from 'fs/promises';
+import { copyFile as copy, unlink } from 'fs/promises';
 import { constants } from 'fs';
 import { dirname } from 'path';
 
-export const copyFile = async (input) => {
+export const moveFile = async (input) => {
   try {
     if (input.length !== 2)  {
       throw new Error('Invalid command arguments!');
@@ -14,8 +14,9 @@ export const copyFile = async (input) => {
     const oldPath = dirname(pathToFile);
 
     await copy(pathToFile, replaceString(oldPath, newPath, pathToFile), constants.COPYFILE_EXCL);
+    await unlink(pathToFile);
  
-    console.log(pathToFile, 'was copied successfully');
+    console.log(pathToFile, 'was moved successfully');
 
   }
   catch(err) {
