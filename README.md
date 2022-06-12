@@ -26,6 +26,22 @@ Implement File Manager using Node.js APIs
 Примеры вызова:
 > rn myfolder/filewitholdname.txt filewithnewname.txt
 
+# copy file
+
+Копирует файл из одной папки в другую, не удаляя его. Требует два аргумента.
+
+Примеры вызова:
+> cp /home/yuliya/myfolder/file.txt /home/yuliya
+
+> cp myfolder/file.txt /home/yuliya
+
+# move file
+
+Работает как копирование, только удаляет исходный файл.
+
+Примеры вызова:
+> mv myfolder/file.txt /home/yuliya
+
 # hash
 
 Функция хеша принимает один аргумент - имя файла, можно вместе с путем к нему

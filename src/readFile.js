@@ -1,7 +1,6 @@
 import { createReadStream } from 'fs';
-import { createHash } from 'crypto';
 
-export const hash = async (input) => {
+export const readFile = async (input) => {
   const promis = new Promise((resolve, reject) => {
     try {
       if (input.length > 1) {
@@ -10,8 +9,7 @@ export const hash = async (input) => {
 
       const pathToFile = input[0];
     
-      const fileToCreateHash = createReadStream(pathToFile);
-      const hash = createHash('sha256');
+      const fileToCreateHash = createReadStream(pathToFile, { encoding:'utf-8' });
 
       fileToCreateHash.on('error', (err) => {
         console.error('Operation failed. ' + err.message)
@@ -23,10 +21,8 @@ export const hash = async (input) => {
       fileToCreateHash.on('readable', () => {
         const data = fileToCreateHash.read();
         if (data) {
-          hash.update(data);
-        } else {
-          console.log('hash: ' + hash.digest('hex'));
-        }
+          console.log(data);
+        } 
       });
 
     }    
