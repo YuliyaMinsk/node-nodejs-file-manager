@@ -9,6 +9,7 @@ import { os } from './os.js';
 import { hash } from './hash.js';
 import { compress } from './compress.js';
 import { decompress } from './decompress.js';
+import { deleteFile } from './delete.js'
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -62,6 +63,7 @@ rl.on('line', async (input) => {
       break;
     }
     case 'rm': {
+      await deleteFile(attributes);
       break;
     }
     case 'os': {

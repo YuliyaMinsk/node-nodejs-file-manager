@@ -1,5 +1,20 @@
 # node-nodejs-file-manager
+
 Implement File Manager using Node.js APIs
+
+# add file
+
+Создает файл в текущей директории (по тз).
+
+Пример вызова:
+> add fff.txt
+
+# delete file
+
+Примеры вызова:
+> rm /home/yuliya/fff.txt
+
+> rm fff.txt
 
 # hash
 
@@ -7,6 +22,7 @@ Implement File Manager using Node.js APIs
 
 Примеры вызова:
 > hash /home/yuliya/fff.txt
+
 > hash fff.txt
 
 # compress and decompress
@@ -18,4 +34,5 @@ Implement File Manager using Node.js APIs
 
 Примеры вызова:
 > compress /home/yuliya/fff.txt /home/yuliya/ggg/
+
 > decompress ggg/fff.txt.br Downloads
